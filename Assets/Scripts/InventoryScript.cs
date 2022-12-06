@@ -40,7 +40,7 @@ public class InventoryScript : MonoBehaviour
 
     public void AddRandomItem()
     {
-        if(InventoryItems.itemList.Count < inventorySlots.Length - 1)
+        if(InventoryItems.itemList.Count < inventorySlots.Length)
         {
             int tempInt = Random.Range(0, 5);
             ItemScript tempIS = new ItemScript();
@@ -67,6 +67,11 @@ public class InventoryScript : MonoBehaviour
             }
             InventoryItems.itemList.Add(tempIS);
         }
+    }
+
+    public void ClearInventory()
+    {
+        InventoryItems.itemList.Clear();
     }
 
 
