@@ -750,6 +750,12 @@ MonoBehaviour:
   initialSlot: {fileID: 2027952062}
   nextSlotOffset: {fileID: 899504815}
   nextRowOffset: {fileID: 636806704}
+  potionGO: {fileID: 4156000364163944055, guid: 0ea0449334ddac640b52f1ca42e30a1f, type: 3}
+  poisonGO: {fileID: 4156000364163944055, guid: 0ea0449334ddac640b52f1ca42e30a1f, type: 3}
+  bombGO: {fileID: 4156000364163944055, guid: 0ea0449334ddac640b52f1ca42e30a1f, type: 3}
+  armorGO: {fileID: 4156000364163944055, guid: 0ea0449334ddac640b52f1ca42e30a1f, type: 3}
+  weaponGO: {fileID: 4156000364163944055, guid: 0ea0449334ddac640b52f1ca42e30a1f, type: 3}
+  scrollGO: {fileID: 4156000364163944055, guid: 0ea0449334ddac640b52f1ca42e30a1f, type: 3}
   slotGO: {fileID: 3136971315885437554, guid: 55be951a96148e0449f1213e8a30df2b, type: 3}
   InventoryItems:
     itemList: []
@@ -1070,7 +1076,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1146233646}
         m_TargetAssemblyTypeName: InventoryScript, Assembly-CSharp
-        m_MethodName: InputJSON
+        m_MethodName: LoadJSON
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

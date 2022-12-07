@@ -7,6 +7,7 @@ public class ItemScript
 {
     public enum ItemTypeENUM { Potion, Poison, Bomb, Scroll, Weapon, Armor};
     public ItemTypeENUM itemType;
+    public GameObject itemObject;
     public float value;
 
 }
