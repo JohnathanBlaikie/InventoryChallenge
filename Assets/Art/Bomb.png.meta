@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 373960bfdb2f777488975670f955c491
+guid: 9237b7a245c528a4fa179f3abe8abedd
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 0, y: 0, z: 30, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -104,12 +104,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Potion_0
+      name: Bomb_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 15
+        width: 13
         height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -118,50 +118,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1cf57bdd97d1fc84face90ebea395980
-      internalID: 19792801
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Potion_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 13
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6b42aecd2bd972944b014c77c3653b57
-      internalID: 145355444
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Potion_2
-      rect:
-        serializedVersion: 2
-        x: 30
-        y: 0
-        width: 13
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 410933e7ed7815d4ca687bdf6b6ddb90
-      internalID: -1130904560
+      spriteID: 9cd4da0ea29dcda498ba458730d7f368
+      internalID: 1644750161
       vertices: []
       indices: 
       edges: []
@@ -170,16 +128,14 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Potion_0: 19792801
-      Potion_1: 145355444
-      Potion_2: -1130904560
+      Bomb_0: 1644750161
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

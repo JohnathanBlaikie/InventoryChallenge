@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Newtonsoft.Json;
 using System.IO;
+using TMPro;
 
 
 public class InventoryScript : MonoBehaviour
@@ -13,15 +14,14 @@ public class InventoryScript : MonoBehaviour
         armorGO, weaponGO, scrollGO;
     Vector3 initialSlotV3, nextSlotV3, nextRowV3;
     [SerializeField] GameObject slotGO;
-    //[SerializeField] List<ItemScript> InventoryItems = new List<ItemScript>();
     [SerializeField] ItemScriptCollection InventoryItems = new ItemScriptCollection();
-    //[SerializeField] JSONWriterScript JSONWriter;
+    [SerializeField] TMP_Dropdown sortMenu;
+    ItemListSorter itemSorter = new ItemListSorter();
     // Start is called before the first frame update
     void Start()
     {
         InstantiateInventorySlots();
 
-        //JsonConvert.SerializeObject(InventorySlots);
     }
 
     public void InstantiateInventorySlots()
@@ -33,7 +33,6 @@ public class InventoryScript : MonoBehaviour
         int invIncrementor = 0;
         for (int i = 0; i < inventorySlots.Length - 1; i++)
         {
-            //if(InventorySlots.Length - i % ItemsPerRow == 0)
             for (int j = 0; j < ItemsPerRow; j++)
             {
                 if (invIncrementor < inventorySlots.Length)
@@ -47,36 +46,39 @@ public class InventoryScript : MonoBehaviour
 
     public void AddRandomItem()
     {
-        
-            int tempInt = Random.Range(0, 5);
-            ItemScript tempIS = new ItemScript();
-            //GameObject tempGO = new GameObject();
-            switch (tempInt)
-            {
-                case 0:
-                    tempIS.itemType = ItemScript.ItemTypeENUM.Potion;
-                    break;
-                case 1:
-                    tempIS.itemType = ItemScript.ItemTypeENUM.Poison;
-                    break;
-                case 2:
-                    tempIS.itemType = ItemScript.ItemTypeENUM.Bomb;
-                    break;
-                case 3:
-                    tempIS.itemType = ItemScript.ItemTypeENUM.Armor;
-                    break;
-                case 4:
-                    tempIS.itemType = ItemScript.ItemTypeENUM.Weapon;
-                    break;
-                case 5:
-                    tempIS.itemType = ItemScript.ItemTypeENUM.Scroll;
-                    break;
-            }
-            SpawnSpecificItem(tempIS.itemType, InventoryItems.itemList.Count);
-        
+
+        int tempInt = Random.Range(0, 6);
+        ItemScript tempIS = new ItemScript(tempInt);
+
+        SpawnSpecificItem(tempIS.itemType, InventoryItems.itemList.Count);
+
     }
 
-    public void SpawnSpecificItem(ItemScript.ItemTypeENUM _itemType, int _iteration)
+    public void SortItemInventory()
+    {
+        if (InventoryItems.itemList != null)
+            switch (sortMenu.value)
+            {
+                case 0:
+                    break;
+                case 1:
+                    InventoryItems.itemList.Sort((x, y) => string.Compare(x.itemType.ToString(), y.itemType.ToString()));
+                    for (int i = 0; i < InventoryItems.itemList.Count; i++)
+                    {
+                        InventoryItems.itemList[i].itemObject.transform.position = inventorySlots[i].transform.position;
+                    }
+                    break;
+                case 2:
+                    InventoryItems.itemList.Sort((x, y) => string.Compare(y.itemType.ToString(), x.itemType.ToString()));
+                    for (int i = 0; i < InventoryItems.itemList.Count; i++)
+                    {
+                        InventoryItems.itemList[i].itemObject.transform.position = inventorySlots[i].transform.position;
+                    }
+                    break;
+            }
+    }
+
+    public void SpawnSpecificItem(ItemScript.ItemTypeENUM _itemType, int iteration)
     {
         if (InventoryItems.itemList.Count < inventorySlots.Length)
         {
@@ -103,11 +105,9 @@ public class InventoryScript : MonoBehaviour
                     break;
             }
 
-            tempGO = Instantiate(tempGO, inventorySlots[_iteration].transform);
+            tempGO = Instantiate(tempGO, inventorySlots[iteration].transform);
 
-            ItemScript tempIS = new ItemScript();
-            tempIS.itemType = _itemType;
-            tempIS.itemObject = tempGO;
+            ItemScript tempIS = new ItemScript(_itemType, tempGO, 0);
             InventoryItems.itemList.Add(tempIS);
         }
     }

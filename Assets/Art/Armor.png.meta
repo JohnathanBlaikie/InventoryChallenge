@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 373960bfdb2f777488975670f955c491
+guid: f0255f057b129d94db735a5fb8ac0ece
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,12 +104,33 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Potion_0
+      name: Armor_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
+        y: 6
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18dea1730048d9f409a6d381b360a91c
+      internalID: -962435106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Armor_1
+      rect:
+        serializedVersion: 2
+        x: 19
         y: 0
-        width: 15
+        width: 17
         height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -118,50 +139,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1cf57bdd97d1fc84face90ebea395980
-      internalID: 19792801
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Potion_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 13
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6b42aecd2bd972944b014c77c3653b57
-      internalID: 145355444
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Potion_2
-      rect:
-        serializedVersion: 2
-        x: 30
-        y: 0
-        width: 13
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 410933e7ed7815d4ca687bdf6b6ddb90
-      internalID: -1130904560
+      spriteID: c26d41573ed2d424ca2587613f85b5c8
+      internalID: -498179584
       vertices: []
       indices: 
       edges: []
@@ -177,9 +156,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Potion_0: 19792801
-      Potion_1: 145355444
-      Potion_2: -1130904560
+      Armor_1: -498179584
+      Armor_0: -962435106
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

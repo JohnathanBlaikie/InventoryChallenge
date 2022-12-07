@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 373960bfdb2f777488975670f955c491
+guid: 199434fc6484e8f40861fbf231ff63fd
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,12 +104,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Potion_0
+      name: Scroll_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 15
+        width: 18
         height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -118,50 +118,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1cf57bdd97d1fc84face90ebea395980
-      internalID: 19792801
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Potion_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 13
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6b42aecd2bd972944b014c77c3653b57
-      internalID: 145355444
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Potion_2
-      rect:
-        serializedVersion: 2
-        x: 30
-        y: 0
-        width: 13
-        height: 11
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 410933e7ed7815d4ca687bdf6b6ddb90
-      internalID: -1130904560
+      spriteID: 629ea6451b8649f4284ab7bfb69c0890
+      internalID: 1543466870
       vertices: []
       indices: 
       edges: []
@@ -177,9 +135,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Potion_0: 19792801
-      Potion_1: 145355444
-      Potion_2: -1130904560
+      Scroll_0: 1543466870
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
