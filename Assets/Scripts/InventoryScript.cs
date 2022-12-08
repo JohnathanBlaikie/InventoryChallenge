@@ -16,13 +16,13 @@ public class InventoryScript : MonoBehaviour
     [SerializeField] GameObject slotGO;
     [SerializeField] ItemScriptCollection InventoryItems = new ItemScriptCollection();
     [SerializeField] TMP_Dropdown sortMenu;
-    ItemListSorter itemSorter = new ItemListSorter();
     // Start is called before the first frame update
     void Start()
     {
         InstantiateInventorySlots();
 
     }
+
 
     public void InstantiateInventorySlots()
     {
@@ -57,6 +57,7 @@ public class InventoryScript : MonoBehaviour
     public void SortItemInventory()
     {
         if (InventoryItems.itemList != null)
+        {
             switch (sortMenu.value)
             {
                 case 0:
@@ -76,6 +77,7 @@ public class InventoryScript : MonoBehaviour
                     }
                     break;
             }
+        }
     }
 
     public void SpawnSpecificItem(ItemScript.ItemTypeENUM _itemType, int iteration)
