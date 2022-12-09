@@ -11,9 +11,10 @@ public class InteractionScript : MonoBehaviour, IPointerDownHandler, IBeginDragH
     [SerializeField] Canvas canvas;
     [SerializeField] CanvasGroup canvasGroup;
     RectTransform rectTransform;
+    Transform lastParent;
     public InventoryScript inventoryAccessor;
     public Vector3 originPosition;
-    public int homeID, personalID;
+    public int homeID;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,32 +27,21 @@ public class InteractionScript : MonoBehaviour, IPointerDownHandler, IBeginDragH
         
     }
 
-    private void FixedUpdate()
-    {
-        //if(followCursor)
-        //{
-        //    mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //    mousePosition.z = Camera.main.nearClipPlane;
-        //    transform.position = mousePosition;
-            
-        //}
-        
-    }
-
-    void OnMouseEnter()
-    {
-        //spriteRenderer.material.color += highlightColor;
-    }
 
     public void OnPointerDown(PointerEventData eventData)
     {
         Debug.Log("Click");
+        
+
     }
     public void OnBeginDrag(PointerEventData eventData)
     {
         canvasGroup.blocksRaycasts = false;
         canvasGroup.alpha = .6f;
         Debug.Log("Drag");
+        lastParent = transform.GetComponentInParent<Transform>();
+        transform.SetParent(transform.root);
+        transform.SetAsLastSibling();
         originPosition = rectTransform.anchoredPosition;
 
 
@@ -68,8 +58,12 @@ public class InteractionScript : MonoBehaviour, IPointerDownHandler, IBeginDragH
         canvasGroup.blocksRaycasts = true;
         canvasGroup.alpha = 1f;
         Debug.Log("Release");
-        inventoryAccessor.InventoryItems.itemList.Find(x => x.itemObject.name == $"{this.name}");
-        //rectTransform.anchoredPosition = originPosition;
+        //inventoryAccessor.InventoryItems.itemList.Find(x => x.itemObject.name == $"{this.name}");
+        if (transform.GetComponentInParent<SlotScript>() == null /*|| transform.childCount != 0*/)
+        {
+            rectTransform.anchoredPosition = originPosition;
+            transform.SetParent(lastParent);
+        }
 
     }
 
@@ -78,28 +72,4 @@ public class InteractionScript : MonoBehaviour, IPointerDownHandler, IBeginDragH
 
     }
 
-    private void OnMouseOver()
-    {
-        //spriteRenderer.material.color += highlightColor;
-
-        //if (Input.GetKeyDown(KeyCode.Mouse0) && !followCursor)
-        //{
-        //    returnPoint = transform.position;
-        //    followCursor = true;
-        //}
-        //if (Input.GetKeyUp(KeyCode.Mouse0) && followCursor)
-        //{
-        //    followCursor = false;
-        //    //if not over empty space
-        //    transform.position = returnPoint;
-
-        //    //if over empty space
-        //    //do stuff
-        //}
-    }
-
-    private void OnMouseExit()
-    {
-        //spriteRenderer.material.color = startColor;
-    }
 }

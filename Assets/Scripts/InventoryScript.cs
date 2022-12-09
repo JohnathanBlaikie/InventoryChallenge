@@ -37,9 +37,12 @@ public class InventoryScript : MonoBehaviour
             for (int j = 0; j < ItemsPerRow; j++)
             {
                 if (invIncrementor < inventorySlots.Length)
+                {
                     inventorySlots[invIncrementor] = Instantiate(slotGO, initialSlotV3 - (nextSlotV3 * j) - (nextRowV3 * i) * canvas.scaleFactor,
                     new Quaternion(0, 0, 0, 0), transform);
-                invIncrementor++;
+                    inventorySlots[invIncrementor].GetComponent<SlotScript>().ID = invIncrementor;
+                }
+                    invIncrementor++;
 
             }
         }
@@ -51,8 +54,14 @@ public class InventoryScript : MonoBehaviour
         int tempInt = Random.Range(0, 6);
         ItemScript tempIS = new ItemScript(tempInt);
 
-        SpawnSpecificItem(tempIS.itemType, InventoryItems.itemList.Count);
+        SpawnItem(tempIS.itemType, InventoryItems.itemList.Count, false);
 
+    }
+
+    public void AddSpecificItem(int itemType)
+    {
+        ItemScript tempIS = new ItemScript(itemType);
+        SpawnItem(tempIS.itemType, InventoryItems.itemList.Count, false);
     }
 
     public void SortItemInventory()
@@ -65,26 +74,32 @@ public class InventoryScript : MonoBehaviour
                     break;
                 case 1:
                     InventoryItems.itemList.Sort((x, y) => string.Compare(x.itemType.ToString(), y.itemType.ToString()));
+                    ItemScript tempItem = null;
                     for (int i = 0; i < InventoryItems.itemList.Count; i++)
                     {
-                        InventoryItems.itemList[i].itemObject.transform.position = inventorySlots[i].transform.position;
-                        InventoryItems.itemList[i].itemObject.transform.SetParent(inventorySlots[i].transform);
+                        tempItem = InventoryItems.itemList[i];
+                        tempItem.itemObject.transform.position = inventorySlots[i].transform.position;
+                        tempItem.itemObject.transform.SetParent(inventorySlots[i].transform);
+                        tempItem.inventoryPosition = i;
+                        tempItem.itemObject.GetComponent<InteractionScript>().homeID = i;
                     }
                     break;
                 case 2:
                     InventoryItems.itemList.Sort((x, y) => string.Compare(y.itemType.ToString(), x.itemType.ToString()));
                     for (int i = 0; i < InventoryItems.itemList.Count; i++)
                     {
+                        tempItem = InventoryItems.itemList[i];
                         InventoryItems.itemList[i].itemObject.transform.position = inventorySlots[i].transform.position;
                         InventoryItems.itemList[i].itemObject.transform.SetParent(inventorySlots[i].transform);
-
+                        tempItem.inventoryPosition = i;
+                        tempItem.itemObject.GetComponent<InteractionScript>().homeID = i;
                     }
                     break;
             }
         }
     }
 
-    public void SpawnSpecificItem(ItemScript.ItemTypeENUM _itemType, int iteration)
+    public void SpawnItem(ItemScript.ItemTypeENUM _itemType, int iteration, bool load)
     {
         if (InventoryItems.itemList.Count < inventorySlots.Length)
         {
@@ -110,9 +125,27 @@ public class InventoryScript : MonoBehaviour
                     tempCG = scrollCG;
                     break;
             }
-            tempCG = Instantiate(tempCG, inventorySlots[iteration].transform);
-            tempCG.transform.SetParent(canvas.transform);
-            ItemScript tempIS = new ItemScript(_itemType, tempCG, 0, iteration);
+            if (load)
+            {
+
+                tempCG = Instantiate(tempCG, inventorySlots[iteration].transform);
+                iteration = tempCG.GetComponent<InteractionScript>().homeID = iteration;
+
+            }
+            else
+            {
+                for (int i = 0; i < inventorySlots.Length; i++)
+                {
+                    if (inventorySlots[i].transform.childCount == 0)
+                    {
+                        tempCG = Instantiate(tempCG, inventorySlots[i].transform);
+                        iteration = tempCG.GetComponent<InteractionScript>().homeID = i;
+                        break;
+                    }
+                }
+            }
+                //tempCG.transform.SetParent(inventorySlots[i]);
+            ItemScript tempIS = new ItemScript(_itemType, tempCG, iteration);
             InventoryItems.itemList.Add(tempIS);
         }
     }
@@ -132,10 +165,17 @@ public class InventoryScript : MonoBehaviour
         }
     }
 
+ 
+
     public void OutputJSON()
     {
         if (InventoryItems != null)
         {
+            for(int i = 0; i < InventoryItems.itemList.Count; i++)
+            {
+                int tempID = InventoryItems.itemList[i].itemObject.GetComponent<InteractionScript>().homeID;
+                InventoryItems.itemList[i].inventoryPosition = tempID;
+            }
             string stringOutput = JsonUtility.ToJson(InventoryItems);
 
             File.WriteAllText(Application.dataPath + "/Inventory.json", stringOutput);
@@ -162,12 +202,17 @@ public class InventoryScript : MonoBehaviour
         }
 
         ClearInventory();
+        //InventoryItems = JsonUtility.FromJson<ItemScriptCollection>(tempString);
+        //int tempListLength = InventoryItems.itemList.Count; 
         ItemScriptCollection tempItemScriptCollection = JsonUtility.FromJson<ItemScriptCollection>(tempString);
         int tempListLength = tempItemScriptCollection.itemList.Count;
-        for(int i = 0; i < tempListLength; i++)
+        for (int i = 0; i < tempListLength; i++)
         {
-            SpawnSpecificItem(tempItemScriptCollection.itemList[i].itemType, i);
+            SpawnItem(tempItemScriptCollection.itemList[i].itemType,
+                tempItemScriptCollection.itemList[i].inventoryPosition, true);
+
         }
+        //InventoryItems = tempItemScriptCollection;
         
     }
 

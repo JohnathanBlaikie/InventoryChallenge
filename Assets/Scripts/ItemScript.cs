@@ -8,8 +8,9 @@ public class ItemScript
     public enum ItemTypeENUM { Potion, Poison, Bomb, Scroll, Weapon, Armor, Pouch};
     public ItemTypeENUM itemType;
     public CanvasGroup itemObject;
-    public float value;
     public int inventoryPosition;
+    ///////////EXPLORE V3 SAVING POSITION TO BYPASS PARENTING BULLSHIT
+
     /// <summary>
     /// Full Item Constructor
     /// </summary>
@@ -17,11 +18,10 @@ public class ItemScript
     /// <param name="_itemObject"></param>
     /// <param name="_value"></param>
     /// <param name="_inventoryPosition"><</param>
-    public ItemScript(ItemTypeENUM _itemType, CanvasGroup _itemObject, float _value, int _inventoryPosition)
+    public ItemScript(ItemTypeENUM _itemType, CanvasGroup _itemObject, int _inventoryPosition)
     {
         itemType = _itemType;
         itemObject = _itemObject;
-        value = _value;
         inventoryPosition = _inventoryPosition;
     }
 
@@ -35,34 +35,38 @@ public class ItemScript
         switch (_itemEnumInt)
         {
             case 0:
-                itemType = ItemScript.ItemTypeENUM.Potion;
+                itemType = ItemTypeENUM.Potion;
                 break;
             case 1:
-                itemType = ItemScript.ItemTypeENUM.Poison;
+                itemType = ItemTypeENUM.Poison;
                 break;
             case 2:
-                itemType = ItemScript.ItemTypeENUM.Bomb;
+                itemType = ItemTypeENUM.Bomb;
                 break;
             case 3:
-                itemType = ItemScript.ItemTypeENUM.Armor;
+                itemType = ItemTypeENUM.Armor;
                 break;
             case 4:
-                itemType = ItemScript.ItemTypeENUM.Weapon;
+                itemType = ItemTypeENUM.Weapon;
                 break;
             case 5:
-                itemType = ItemScript.ItemTypeENUM.Scroll;
+                itemType = ItemTypeENUM.Scroll;
                 break;
             case 6:
-                itemType = ItemScript.ItemTypeENUM.Pouch;
+                itemType = ItemTypeENUM.Pouch;
                 break;
         }
     }
 
+    public ItemScript(ItemTypeENUM _itemType)
+    {
+        itemType = _itemType;
+    }
     public ItemScript()
     {
         itemType = 0;
         itemObject = null;
-        value = 0;
+        inventoryPosition = 0;
     }
 
 }

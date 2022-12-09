@@ -6,19 +6,18 @@ using UnityEngine.EventSystems;
 public class SlotScript : MonoBehaviour, IDropHandler
 {
     public int ID;
+    public CanvasGroup currentItem = null;
+
     public void OnDrop(PointerEventData eventData)
     {
-        if (eventData.pointerDrag != null)
+        if (eventData.pointerDrag != null && transform.childCount == 0)
         {
-            PointerEventData tempEventData = eventData;
-            eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition =
-                GetComponent<RectTransform>().anchoredPosition;
-            InteractionScript tempInteraction = eventData.pointerDrag.GetComponent<InteractionScript>();
-            tempInteraction.originPosition =
-                GetComponent<RectTransform>().anchoredPosition;
-            tempInteraction.homeID = ID;
-            Debug.Log(tempInteraction.inventoryAccessor.InventoryItems.itemList.Find(x => x.itemObject.name == $"{tempInteraction.gameObject.name}"));
-             //tempInteraction.inventoryAccessor.InventoryItems.itemList.Find(x => x.itemObject.name == $"{tempInteraction.gameObject.name}"));
+            InteractionScript item = eventData.pointerDrag.GetComponent<InteractionScript>();
+            eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+            item.transform.parent = transform;
+            item.homeID = ID;
+            //Debug.Log(tempInteraction.inventoryAccessor.InventoryItems.itemList.Find(x => x.itemObject.name == $"{tempInteraction.gameObject.name}"));
+            // //tempInteraction.inventoryAccessor.InventoryItems.itemList.Find(x => x.itemObject.name == $"{tempInteraction.gameObject.name}"));
         }
     }
 }
