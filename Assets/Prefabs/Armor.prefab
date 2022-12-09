@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -8592719731751939787}
   - component: {fileID: 4444340284901438045}
   - component: {fileID: 7766224990953025670}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Armor
   m_TagString: InventoryItem
   m_Icon: {fileID: 0}

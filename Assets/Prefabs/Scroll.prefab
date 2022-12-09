@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2697435693066066063}
   - component: {fileID: 7371069002310233428}
   - component: {fileID: 4456522481392564544}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Scroll
   m_TagString: InventoryItem
   m_Icon: {fileID: 0}

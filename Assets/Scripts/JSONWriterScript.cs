@@ -19,13 +19,7 @@ public class JSONWriterScript : MonoBehaviour
         if(pInventory.itemList != null)
         {
             string stringOutput = JsonUtility.ToJson(pInventory.itemList);
-
-            //for(int i = 0; i < pInventory.itemList.Count - 1; i++)
-            //{
-            //    string stringOutput = JsonUtility.ToJson(pInventory.itemList[i]); 
-            //}
             File.WriteAllText(Application.dataPath + "/Inventory.JSON", stringOutput);
-            
         }
         else
         {

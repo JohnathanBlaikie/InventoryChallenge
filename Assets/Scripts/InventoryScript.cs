@@ -10,17 +10,18 @@ public class InventoryScript : MonoBehaviour
 {
     [SerializeField] int ItemsPerRow;
     public GameObject[] inventorySlots = new GameObject[25];
-    public GameObject initialSlot, nextSlotOffset, nextRowOffset, potionGO, poisonGO, bombGO,
-        armorGO, weaponGO, scrollGO;
+    public GameObject initialSlot, nextSlotOffset, nextRowOffset;
     Vector3 initialSlotV3, nextSlotV3, nextRowV3;
+    public CanvasGroup potionCG, poisonCG, bombCG,
+        armorCG, weaponCG, scrollCG;
     [SerializeField] GameObject slotGO;
-    [SerializeField] ItemScriptCollection InventoryItems = new ItemScriptCollection();
+    public ItemScriptCollection InventoryItems = new ItemScriptCollection();
     [SerializeField] TMP_Dropdown sortMenu;
+    [SerializeField] Canvas canvas;
     // Start is called before the first frame update
     void Start()
     {
         InstantiateInventorySlots();
-
     }
 
 
@@ -36,7 +37,7 @@ public class InventoryScript : MonoBehaviour
             for (int j = 0; j < ItemsPerRow; j++)
             {
                 if (invIncrementor < inventorySlots.Length)
-                    inventorySlots[invIncrementor] = Instantiate(slotGO, initialSlotV3 - (nextSlotV3 * j) - (nextRowV3 * i),
+                    inventorySlots[invIncrementor] = Instantiate(slotGO, initialSlotV3 - (nextSlotV3 * j) - (nextRowV3 * i) * canvas.scaleFactor,
                     new Quaternion(0, 0, 0, 0), transform);
                 invIncrementor++;
 
@@ -67,6 +68,7 @@ public class InventoryScript : MonoBehaviour
                     for (int i = 0; i < InventoryItems.itemList.Count; i++)
                     {
                         InventoryItems.itemList[i].itemObject.transform.position = inventorySlots[i].transform.position;
+                        InventoryItems.itemList[i].itemObject.transform.SetParent(inventorySlots[i].transform);
                     }
                     break;
                 case 2:
@@ -74,6 +76,8 @@ public class InventoryScript : MonoBehaviour
                     for (int i = 0; i < InventoryItems.itemList.Count; i++)
                     {
                         InventoryItems.itemList[i].itemObject.transform.position = inventorySlots[i].transform.position;
+                        InventoryItems.itemList[i].itemObject.transform.SetParent(inventorySlots[i].transform);
+
                     }
                     break;
             }
@@ -84,32 +88,31 @@ public class InventoryScript : MonoBehaviour
     {
         if (InventoryItems.itemList.Count < inventorySlots.Length)
         {
-            GameObject tempGO = null;
+            CanvasGroup tempCG = null;
             switch (_itemType)
             {
                 case ItemScript.ItemTypeENUM.Potion:
-                    tempGO = potionGO;
+                    tempCG = potionCG;
                     break;
                 case ItemScript.ItemTypeENUM.Poison:
-                    tempGO = poisonGO;
+                    tempCG = poisonCG;
                     break;
                 case ItemScript.ItemTypeENUM.Bomb:
-                    tempGO = bombGO;
+                    tempCG = bombCG;
                     break;
                 case ItemScript.ItemTypeENUM.Armor:
-                    tempGO = armorGO;
+                    tempCG = armorCG;
                     break;
                 case ItemScript.ItemTypeENUM.Weapon:
-                    tempGO = weaponGO;
+                    tempCG = weaponCG;
                     break;
                 case ItemScript.ItemTypeENUM.Scroll:
-                    tempGO = scrollGO;
+                    tempCG = scrollCG;
                     break;
             }
-
-            tempGO = Instantiate(tempGO, inventorySlots[iteration].transform);
-
-            ItemScript tempIS = new ItemScript(_itemType, tempGO, 0);
+            tempCG = Instantiate(tempCG, inventorySlots[iteration].transform);
+            tempCG.transform.SetParent(canvas.transform);
+            ItemScript tempIS = new ItemScript(_itemType, tempCG, 0, iteration);
             InventoryItems.itemList.Add(tempIS);
         }
     }

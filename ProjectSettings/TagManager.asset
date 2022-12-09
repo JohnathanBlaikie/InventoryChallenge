@@ -43,3 +43,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Items
+    uniqueID: 3936277423
+    locked: 0
+  - name: Slots
+    uniqueID: 1063679795
+    locked: 0

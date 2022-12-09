@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4156000362912583767}
   - component: {fileID: 4156000362912583760}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Potion Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 8633918913139105410}
   - component: {fileID: 7647031286886068676}
   - component: {fileID: -7502027548826799429}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Health Potion
   m_TagString: InventoryItem
   m_Icon: {fileID: 0}

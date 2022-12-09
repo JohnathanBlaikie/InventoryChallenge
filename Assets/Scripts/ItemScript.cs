@@ -7,20 +7,24 @@ public class ItemScript
 {
     public enum ItemTypeENUM { Potion, Poison, Bomb, Scroll, Weapon, Armor, Pouch};
     public ItemTypeENUM itemType;
-    public GameObject itemObject;
+    public CanvasGroup itemObject;
     public float value;
+    public int inventoryPosition;
     /// <summary>
     /// Full Item Constructor
     /// </summary>
     /// <param name="_itemType"></param>
     /// <param name="_itemObject"></param>
     /// <param name="_value"></param>
-    public ItemScript(ItemTypeENUM _itemType, GameObject _itemObject, float _value)
+    /// <param name="_inventoryPosition"><</param>
+    public ItemScript(ItemTypeENUM _itemType, CanvasGroup _itemObject, float _value, int _inventoryPosition)
     {
         itemType = _itemType;
         itemObject = _itemObject;
         value = _value;
+        inventoryPosition = _inventoryPosition;
     }
+
 
     /// <summary>
     /// Simplified Item Constructor
