@@ -362,7 +362,7 @@ GameObject:
   - component: {fileID: 230953567}
   - component: {fileID: 230953566}
   m_Layer: 5
-  m_Name: Add Scroll (1)
+  m_Name: Add Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

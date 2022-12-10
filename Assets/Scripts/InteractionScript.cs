@@ -34,7 +34,7 @@ public class InteractionScript : MonoBehaviour, IPointerDownHandler, IBeginDragH
         canvasGroup.blocksRaycasts = false;
         canvasGroup.alpha = .6f;
         Debug.Log("Drag");
-        lastParent = transform.GetComponentInParent<Transform>();
+        lastParent = transform.parent;
         transform.SetParent(transform.root);
         transform.SetAsLastSibling();
         originPosition = rectTransform.anchoredPosition;
