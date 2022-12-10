@@ -144,7 +144,6 @@ public class InventoryScript : MonoBehaviour
                     }
                 }
             }
-                //tempCG.transform.SetParent(inventorySlots[i]);
             ItemScript tempIS = new ItemScript(_itemType, tempCG, iteration);
             InventoryItems.itemList.Add(tempIS);
         }
@@ -202,8 +201,6 @@ public class InventoryScript : MonoBehaviour
         }
 
         ClearInventory();
-        //InventoryItems = JsonUtility.FromJson<ItemScriptCollection>(tempString);
-        //int tempListLength = InventoryItems.itemList.Count; 
         ItemScriptCollection tempItemScriptCollection = JsonUtility.FromJson<ItemScriptCollection>(tempString);
         int tempListLength = tempItemScriptCollection.itemList.Count;
         for (int i = 0; i < tempListLength; i++)
@@ -212,7 +209,6 @@ public class InventoryScript : MonoBehaviour
                 tempItemScriptCollection.itemList[i].inventoryPosition, true);
 
         }
-        //InventoryItems = tempItemScriptCollection;
         
     }
 
