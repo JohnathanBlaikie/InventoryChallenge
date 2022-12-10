@@ -9,7 +9,6 @@ public class ItemScript
     public ItemTypeENUM itemType;
     public CanvasGroup itemObject;
     public int inventoryPosition;
-    ///////////EXPLORE V3 SAVING POSITION TO BYPASS PARENTING BULLSHIT
 
     /// <summary>
     /// Full Item Constructor

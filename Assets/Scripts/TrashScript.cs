@@ -22,10 +22,6 @@ public class TrashScript : MonoBehaviour, IDropHandler
                 }
             }
             
-            //item.transform.parent = transform;
-            //item.homeID = ID;
-            //Debug.Log(tempInteraction.inventoryAccessor.InventoryItems.itemList.Find(x => x.itemObject.name == $"{tempInteraction.gameObject.name}"));
-            // //tempInteraction.inventoryAccessor.InventoryItems.itemList.Find(x => x.itemObject.name == $"{tempInteraction.gameObject.name}"));
         }
     }
 }
