@@ -1274,7 +1274,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.24528301, g: 0.24528301, b: 0.24528301, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -2383,6 +2383,7 @@ MonoBehaviour:
   armorCG: {fileID: 5130357107344650109, guid: 50258186f85f20342bf0fa5d7de30adc, type: 3}
   weaponCG: {fileID: -7976722000509799038, guid: f2c704114445bce4180bf0e538a94603, type: 3}
   scrollCG: {fileID: 8839529027850640201, guid: d583997bb6a37854fae04d388f1ac46c, type: 3}
+  pouchCG: {fileID: -7680692275095357528, guid: 22308813d96de04448e0836e6bbfb551, type: 3}
   slotGO: {fileID: 7800623789062376054, guid: 73c011943f813e4459007a67511f4e76, type: 3}
   InventoryItems:
     itemList: []

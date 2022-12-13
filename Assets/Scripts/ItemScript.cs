@@ -9,6 +9,7 @@ public class ItemScript
     public ItemTypeENUM itemType;
     public CanvasGroup itemObject;
     public int inventoryPosition;
+    //public ItemScript[] inventoryWithinInventory = null;
 
     /// <summary>
     /// Full Item Constructor
@@ -24,6 +25,13 @@ public class ItemScript
         inventoryPosition = _inventoryPosition;
     }
 
+    //public ItemScript(ItemTypeENUM _itemType, CanvasGroup _itemObject, int _inventoryPosition, ItemScript[] _inventoryWithinInventory)
+    //{
+    //    itemType = _itemType;
+    //    itemObject = _itemObject;
+    //    inventoryPosition = _inventoryPosition;
+    //    inventoryWithinInventory = _inventoryWithinInventory;
+    //}
 
     /// <summary>
     /// Simplified Item Constructor

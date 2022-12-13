@@ -6,6 +6,7 @@ TagManager:
   tags:
   - InventorySlot
   - InventoryItem
+  - InventoryPouch
   layers:
   - Default
   - TransparentFX

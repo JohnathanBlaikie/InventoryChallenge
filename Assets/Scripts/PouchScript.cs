@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class InteractionScript : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler
+
+public class PouchScript : MonoBehaviour, IDropHandler
 {
     [SerializeField] Color highlightColor;
     [SerializeField] Canvas canvas;
@@ -12,8 +13,11 @@ public class InteractionScript : MonoBehaviour, IPointerDownHandler, IBeginDragH
     Transform lastParent;
     public InventoryScript inventoryAccessor;
     public Vector3 originPosition;
-    public int homeID;
-    // Start is called before the first frame update
+    public int personalID, slotPositionID;
+    public CanvasGroup currentItem = null;
+    List<ItemScript>inventoryWithinInventory = null;
+
+
     void Start()
     {
         canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
@@ -25,7 +29,7 @@ public class InteractionScript : MonoBehaviour, IPointerDownHandler, IBeginDragH
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        
+
 
     }
     public void OnBeginDrag(PointerEventData eventData)
@@ -59,7 +63,14 @@ public class InteractionScript : MonoBehaviour, IPointerDownHandler, IBeginDragH
 
     public void OnDrop(PointerEventData eventData)
     {
-
+        if (eventData.pointerDrag != null && transform.childCount == 0)
+        {
+            InteractionScript item = eventData.pointerDrag.GetComponent<InteractionScript>();
+            eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+            item.transform.parent = transform;
+            item.homeID = slotPositionID;
+            
+            inventoryWithinInventory.Add(item.GetComponent<ItemScript>());
+        }
     }
-
 }

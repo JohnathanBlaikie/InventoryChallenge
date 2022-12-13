@@ -13,7 +13,7 @@ public class InventoryScript : MonoBehaviour
     public GameObject initialSlot, nextSlotOffset, nextRowOffset;
     Vector3 initialSlotV3, nextSlotV3, nextRowV3;
     public CanvasGroup potionCG, poisonCG, bombCG,
-        armorCG, weaponCG, scrollCG;
+        armorCG, weaponCG, scrollCG, pouchCG;
     [SerializeField] GameObject slotGO;
     public ItemScriptCollection InventoryItems = new ItemScriptCollection();
     [SerializeField] TMP_Dropdown sortMenu;
@@ -123,6 +123,9 @@ public class InventoryScript : MonoBehaviour
                     break;
                 case ItemScript.ItemTypeENUM.Scroll:
                     tempCG = scrollCG;
+                    break;
+                case ItemScript.ItemTypeENUM.Pouch:
+                    tempCG = pouchCG;
                     break;
             }
             if (load)
